@@ -31,3 +31,20 @@ http://localhost:8002/api/v1/payment/
     "paymentMode": "Cheque"
 }
 ```
+
+## 2_Eureka_Server_Registry:
+    1. Service-Registry - Eureka Server implementation
+    2. Enable eureka client configuration in both Order-Service and Payment Service.
+    3. Change the URL of Order Service in Payment Service.
+    4. Provide eureka-client maven dependency with cloud dependencymanagement and spring cloud version.
+    5. Run service-registry application first (http://localhost:8761/)
+    6. Then run order-service and payment-service.
+    7. Every service should be registered with Eureka Server now.
+
+## 3_Cloud_Gateway_Implementation:
+    Till now when we are calling Order-Service and Payment-Service, we are invoking corresponding individual URL. There should be a common service where all the entry point should be registered and request should be invoked to this URL.
+    All the requests can be made to a single endpoint i.e. http://localhost:7090
+    ```
+    http://localhost:7090/api/v1/orders/
+    http://localhost:7090/api/v1/payment/
+    ```
