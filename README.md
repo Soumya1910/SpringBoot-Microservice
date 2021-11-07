@@ -48,3 +48,12 @@ http://localhost:8002/api/v1/payment/
     http://localhost:7090/api/v1/orders/
     http://localhost:7090/api/v1/payment/
     ```
+
+## 4_Config_Server:
+    Common Eureka related configuration can be placed in a centralized store from where application configuration can be loaded.
+    Application should be started in below order:
+    1. Service-Registry
+    2. Config-Service
+    3. Cloud-Gateway
+    4. Order-Service
+    5. Payment-Service

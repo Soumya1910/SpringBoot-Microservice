@@ -6,9 +6,3 @@ spring:  application:    name: ORDER-SERVICE  datasource:    url: jdbc:postg
     properties:      hibernate:
         dialect: org.hibernate.dialect.PostgreSQLDialect
         format-sql: true    hibernate:      ddl-auto: create  sql:    init:      mode: always
-eureka:
-  client:
-    register-with-eureka: true
-    fetch-registry: true
-    service-url:
-      defaultZone: http://localhost:8761/eureka/
