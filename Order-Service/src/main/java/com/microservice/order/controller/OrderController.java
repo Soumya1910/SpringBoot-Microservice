@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -46,6 +47,12 @@ public class OrderController {
 		Order order = this.orderService.getOrderById(order_id);
 		logger.debug("Final response for a single order");
 		return order;
+	}
+	
+	@PutMapping("/order_id/{order_id}/payment_status/{payment_status}")
+	public int updatePaymentStatus(@PathVariable("order_id") long order_id, @PathVariable("payment_status") String payment_status) {
+		logger.info("Payment status update for order id: "+order_id);
+		return this.orderService.updatePaymentStatus(order_id, payment_status);
 	}
 
 }

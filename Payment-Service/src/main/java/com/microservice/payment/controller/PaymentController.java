@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.microservice.payment.common.PaymentResponse;
 import com.microservice.payment.entity.Payment;
 import com.microservice.payment.service.PaymentService;
 
@@ -26,9 +27,9 @@ public class PaymentController {
 	private PaymentService paymentService;
 	
 	@PostMapping("/")
-	public Payment doPay(@RequestBody Payment payment) throws Exception {
+	public PaymentResponse doPay(@RequestBody Payment payment) throws Exception {
 		logger.info("Payment request received...");
-		Payment pay = this.paymentService.createPayment(payment);
+		PaymentResponse pay = this.paymentService.createPayment(payment);
 		logger.info("payment request is processed successfully");
 		return pay;
 	}
