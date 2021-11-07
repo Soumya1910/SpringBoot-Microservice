@@ -18,7 +18,8 @@ import com.microservice.payment.repository.PaymentRepository;
 public class PaymentService {
 
 	final static Logger logger = LoggerFactory.getLogger(PaymentService.class);
-	final static String ORDER_BASE_URL = "http://localhost:8001/api/v1/orders";
+	// final static String ORDER_BASE_URL = "http://localhost:8001/api/v1/orders";
+	final static String ORDER_BASE_URL = "http://ORDER-SERVICE/api/v1/orders";
 	
 	@Autowired
 	private PaymentRepository paymentRepo;
