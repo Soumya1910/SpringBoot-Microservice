@@ -10,6 +10,7 @@ import org.springframework.web.client.RestTemplate;
 
 import com.microservice.payment.common.Order;
 import com.netflix.hystrix.contrib.javanica.annotation.HystrixCommand;
+import com.netflix.hystrix.contrib.javanica.annotation.HystrixProperty;
 
 @Service
 public class PaymentOrderService {
@@ -21,7 +22,12 @@ public class PaymentOrderService {
 	@Autowired
 	private RestTemplate restTemplate;
 	
-	@HystrixCommand(fallbackMethod = "fallbackGetOrderDetails")
+	@HystrixCommand(fallbackMethod = "fallbackGetOrderDetails", threadPoolKey = "paymentOrderServicePool", threadPoolProperties = {
+			
+			@HystrixProperty(name = "coresize", value="20"),
+			@HystrixProperty(name = "maxQueueSize", value="10"),
+		}
+	)
 	public Order getOrderDetails(long order_id) {
 		Order order = this.restTemplate.getForObject(ORDER_BASE_URL+"/order_id/"+order_id, Order.class);
 		logger.info("Get Order Details in payment module: "+order);

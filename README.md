@@ -66,3 +66,7 @@ http://localhost:8002/api/v1/payment/
     2. Add @EnableCircuitBreaker in main class
     3. Add @HyxtrixCommands in service level which needs circuit breaker
     4. Configure different hystrix behavior
+
+## 6_Circuit_Breaker_Bulkhead_Pattern
+    In this pattern, dedicated threadpool will be allotted to separate hystrix service. In this way if one of the service is slow, other services will not be affected.
+    It's very easy to configure. You just need to play around the different parameters of HystrixCommand
