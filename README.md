@@ -58,3 +58,11 @@ http://localhost:8002/api/v1/payment/
     3. Cloud-Gateway
     4. Order-Service
     5. Payment-Service
+
+## 5_Circuit_Breaker
+    Here we are using Hystrix as Circuit Breaker framework.
+    Steps need to follow:
+    1. Add Maven dependency in pom.xml (spring-cloud-starter-netflix-hystrix)
+    2. Add @EnableCircuitBreaker in main class
+    3. Add @HyxtrixCommands in service level which needs circuit breaker
+    4. Configure different hystrix behavior
